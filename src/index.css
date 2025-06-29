@@ -1,3 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -19,6 +25,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
 }
 
 #root {
@@ -35,4 +42,227 @@ button {
 
 input {
   font-family: inherit;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Ensure smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Navigation specific styles */
+.nav-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+/* Mobile menu animation */
+@media (max-width: 768px) {
+  .mobile-menu-enter {
+    opacity: 0;
+    max-height: 0;
+  }
+  
+  .mobile-menu-enter-active {
+    opacity: 1;
+    max-height: 400px;
+    transition: opacity 300ms ease-in-out, max-height 300ms ease-in-out;
+  }
+  
+  .mobile-menu-exit {
+    opacity: 1;
+    max-height: 400px;
+  }
+  
+  .mobile-menu-exit-active {
+    opacity: 0;
+    max-height: 0;
+    transition: opacity 300ms ease-in-out, max-height 300ms ease-in-out;
+  }
+}
+
+/* Active page indicator */
+.nav-active-indicator {
+  position: relative;
+}
+
+.nav-active-indicator::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background-color: #2563eb;
+  border-radius: 50%;
+}
+
+/* Backdrop blur support */
+@supports (backdrop-filter: blur(12px)) {
+  .backdrop-blur-md {
+    backdrop-filter: blur(12px);
+  }
+}
+
+@supports not (backdrop-filter: blur(12px)) {
+  .backdrop-blur-md {
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+}
+
+/* Custom animations for Home page */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceGentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.3), 0 0 40px rgba(236, 72, 153, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(236, 72, 153, 0.5), 0 0 60px rgba(236, 72, 153, 0.3);
+  }
+}
+
+@keyframes glowButton {
+  0%, 100% {
+    box-shadow: 0 10px 40px rgba(236, 72, 153, 0.3), 0 0 0 1px rgba(236, 72, 153, 0.1);
+  }
+  50% {
+    box-shadow: 0 15px 50px rgba(236, 72, 153, 0.4), 0 0 0 1px rgba(236, 72, 153, 0.2);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Animation classes */
+.animate-fade-in {
+  animation: fadeIn 1s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out;
+}
+
+.animate-slide-up-delay-1 {
+  animation: slideUp 0.8s ease-out 0.2s both;
+}
+
+.animate-slide-up-delay-2 {
+  animation: slideUp 0.8s ease-out 0.4s both;
+}
+
+.animate-slide-up-delay-3 {
+  animation: slideUp 0.8s ease-out 0.6s both;
+}
+
+.animate-fade-in-up {
+  animation: fadeIn 1s ease-out 0.8s both;
+}
+
+.animate-fade-in-up-delay {
+  animation: fadeIn 1s ease-out 1s both;
+}
+
+.animate-bounce-slow {
+  animation: bounceGentle 3s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-glow-button {
+  animation: glowButton 2s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 3s ease infinite;
+}
+
+/* Enhanced shadow utilities */
+.shadow-3xl {
+  box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Responsive text sizing */
+@media (max-width: 640px) {
+  .text-6xl {
+    font-size: 3.5rem;
+  }
+  .text-7xl {
+    font-size: 4rem;
+  }
+  .text-8xl {
+    font-size: 4.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .text-6xl {
+    font-size: 3rem;
+  }
+  .text-7xl {
+    font-size: 3.5rem;
+  }
+  .text-8xl {
+    font-size: 4rem;
+  }
 }
